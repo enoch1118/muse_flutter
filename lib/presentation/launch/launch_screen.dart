@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:muse_flutter/core/asset/color_mapper.dart';
 import 'package:muse_flutter/core/asset/image_mapper.dart';
+import 'package:muse_flutter/core/asset/router_mapper.dart';
+import 'package:muse_flutter/core/extensions/router_extension.dart';
 import 'package:muse_flutter/presentation/common/shader/shader_mask.dart';
 import 'package:muse_flutter/presentation/launch/bloc/launch_bloc.dart';
 
@@ -12,7 +16,7 @@ class LaunchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LaunchBloc(),
+      create: (context) => LaunchBloc()..add(OnLaunch()),
       child: const _Body(),
     );
   }
@@ -27,8 +31,10 @@ class _Body extends StatelessWidget {
       listener: (context, state) {
         switch (state) {
           case NeedHome():
+            context.xgo(RouterMapper.home);
             break;
           case NeedOnBoarding():
+            context.xgo(RouterMapper.onboard);
             break;
           default:
         }
@@ -43,11 +49,7 @@ class _Body extends StatelessWidget {
             const XFlex(1),
             ShaderText(
               text: "Muse",
-              colors: const [
-                Color.fromRGBO(112, 129, 230, 1),
-                Color.fromRGBO(157, 117, 169, 1),
-                Color.fromRGBO(185, 115, 114, 1)
-              ],
+              colors: GradientMapper.geminiGradient.colors,
               style: context.t.headlineLarge.s(50).cw,
             ).center.infW,
             const XFlex(1),

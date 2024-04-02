@@ -8,7 +8,7 @@ class SystemUsecase {
     return systemRepository.getFirstLaunch();
   }
 
-  Future<bool> setFirstLaunch({bool value = true}) {
+  Future<bool> setFirstLaunch({bool value = false}) {
     return systemRepository.setFirstLaunch(value);
   }
 }
