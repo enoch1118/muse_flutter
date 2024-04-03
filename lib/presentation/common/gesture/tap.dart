@@ -7,6 +7,7 @@ class Tap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(onPressed: onPressed, child: child);
+    return CupertinoButton(
+        padding: EdgeInsets.zero, onPressed: onPressed, child: child);
   }
 }

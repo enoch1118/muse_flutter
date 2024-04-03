@@ -51,13 +51,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   onPressed: () {
                     context.xgo(RouterMapper.home);
                   },
-                  child: ER(
+                  child: RE(
                     [
                       T(
                         "Start",
                         context.t.bodyLarge.wb.c(Colors.purpleAccent),
                       ),
-                      const Sb().w(8),
+                      const SB().w(8),
                       const Icon(
                         Icons.arrow_forward,
                         color: Colors.purpleAccent,
@@ -71,7 +71,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             left: 0,
             height: 44,
             right: 0,
-            child: CR(List.generate(
+            child: RC(List.generate(
                 titles.length,
                 (index) => AnimatedContainer(
                       margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -97,12 +97,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         children: [
           const XFlex(1),
           XImage(images[index]).wh(300).round,
-          const Sb().h(50),
+          const SB().h(50),
           ShaderText(
               text: titles[index],
               colors: GradientMapper.geminiGradient.colors,
               style: context.t.titleLarge.cw),
-          const Sb().h(18),
+          const SB().h(18),
           TC(desc[index], context.t.bodyMedium),
           const XFlex(1),
         ],

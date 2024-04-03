@@ -28,6 +28,8 @@ lib/generated_plugin_registrant.dart
 **/android/key.properties
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+# freezed and g.dart
+
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
@@ -67,3 +69,5 @@ lib/generated_plugin_registrant.dart
 
 # End of https://www.toptal.com/developers/gitignore/api/flutter
 .env
+*.g.dart
+*.freezed.dart

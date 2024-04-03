@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-enum ImageMapper { geminiLogo, intro1, intro2, intro3 }
+enum ImageMapper { geminiLogo, intro1, intro2, intro3, connectError }
 
 const _mapper = {
   ImageMapper.geminiLogo: "assets/logo/gemini.svg",
   ImageMapper.intro1: "assets/onboard/intro1.jpeg",
   ImageMapper.intro2: "assets/onboard/intro2.jpeg",
   ImageMapper.intro3: "assets/onboard/intro3.jpeg",
+  ImageMapper.connectError: "assets/images/connect_error.png"
 };
 
 extension MapperExtension on ImageMapper {
@@ -25,11 +26,31 @@ class XSVG extends StatelessWidget {
 }
 
 class XImage extends StatelessWidget {
-  const XImage(this.mapper, {super.key});
+  const XImage(this.mapper, {super.key, this.fit});
   final ImageMapper mapper;
+  final BoxFit? fit;
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(mapper.path);
+    return Image.asset(
+      mapper.path,
+      fit: fit,
+    );
+  }
+}
+
+class XDecoImage extends StatelessWidget {
+  const XDecoImage(this.mapper, {super.key, this.fit, this.filter});
+  final ImageMapper mapper;
+  final BoxFit? fit;
+  final ColorFilter? filter;
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(mapper.path), fit: fit, colorFilter: filter)),
+    );
   }
 }

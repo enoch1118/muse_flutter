@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class ShaderText extends StatelessWidget {
   const ShaderText(
-      {super.key, required this.text, this.style, required this.colors});
+      {super.key,
+      required this.text,
+      this.style,
+      required this.colors,
+      this.maxLines});
   final String text;
+  final int? maxLines;
   final TextStyle? style;
   final List<Color> colors;
 
@@ -16,6 +21,7 @@ class ShaderText extends StatelessWidget {
       child: Text(
         text,
         style: style,
+        maxLines: maxLines,
       ),
     );
   }

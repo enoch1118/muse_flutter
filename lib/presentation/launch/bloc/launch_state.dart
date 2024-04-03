@@ -9,4 +9,6 @@ sealed class LaunchState with _$LaunchState {
   const factory LaunchState.needOnboarding() = NeedOnBoarding;
 
   const factory LaunchState.needHome() = NeedHome;
+
+  const factory LaunchState.geminiError() = GeminiError;
 }

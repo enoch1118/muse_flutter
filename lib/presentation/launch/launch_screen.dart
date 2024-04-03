@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:muse_flutter/core/asset/color_mapper.dart';
 import 'package:muse_flutter/core/asset/image_mapper.dart';
 import 'package:muse_flutter/core/asset/router_mapper.dart';
 import 'package:muse_flutter/core/extensions/router_extension.dart';
+import 'package:muse_flutter/presentation/common/popup/common_popup.dart';
 import 'package:muse_flutter/presentation/common/shader/shader_mask.dart';
 import 'package:muse_flutter/presentation/launch/bloc/launch_bloc.dart';
 
@@ -36,6 +38,17 @@ class _Body extends StatelessWidget {
           case NeedOnBoarding():
             context.xgo(RouterMapper.onboard);
             break;
+          case GeminiError():
+            CommonPopup.show(context, ImageMapper.connectError,
+                    title: "Connection Error",
+                    desc:
+                        "Please check your connection or api key\nand try again.")
+                .then((value) {
+              if (value == PopupResult.ok) {
+                exit(0);
+              }
+            });
+            break;
           default:
         }
       },
@@ -54,9 +67,9 @@ class _Body extends StatelessWidget {
             ).center.infW,
             const XFlex(1),
             T("powered by", context.t.bodyMedium.c(Colors.grey)),
-            const Sb().h(12),
+            const SB().h(12),
             const XSVG(ImageMapper.geminiLogo).h(50),
-            const Sb().h(120)
+            const SB().h(120)
           ],
         ),
       );

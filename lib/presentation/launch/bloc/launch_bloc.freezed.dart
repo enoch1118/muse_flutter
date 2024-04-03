@@ -22,6 +22,7 @@ mixin _$LaunchState {
     required TResult Function() loading,
     required TResult Function() needOnboarding,
     required TResult Function() needHome,
+    required TResult Function() geminiError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$LaunchState {
     TResult? Function()? loading,
     TResult? Function()? needOnboarding,
     TResult? Function()? needHome,
+    TResult? Function()? geminiError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$LaunchState {
     TResult Function()? loading,
     TResult Function()? needOnboarding,
     TResult Function()? needHome,
+    TResult Function()? geminiError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$LaunchState {
     required TResult Function(Loading value) loading,
     required TResult Function(NeedOnBoarding value) needOnboarding,
     required TResult Function(NeedHome value) needHome,
+    required TResult Function(GeminiError value) geminiError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$LaunchState {
     TResult? Function(Loading value)? loading,
     TResult? Function(NeedOnBoarding value)? needOnboarding,
     TResult? Function(NeedHome value)? needHome,
+    TResult? Function(GeminiError value)? geminiError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$LaunchState {
     TResult Function(Loading value)? loading,
     TResult Function(NeedOnBoarding value)? needOnboarding,
     TResult Function(NeedHome value)? needHome,
+    TResult Function(GeminiError value)? geminiError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$InitImpl implements Init {
     required TResult Function() loading,
     required TResult Function() needOnboarding,
     required TResult Function() needHome,
+    required TResult Function() geminiError,
   }) {
     return init();
   }
@@ -138,6 +145,7 @@ class _$InitImpl implements Init {
     TResult? Function()? loading,
     TResult? Function()? needOnboarding,
     TResult? Function()? needHome,
+    TResult? Function()? geminiError,
   }) {
     return init?.call();
   }
@@ -149,6 +157,7 @@ class _$InitImpl implements Init {
     TResult Function()? loading,
     TResult Function()? needOnboarding,
     TResult Function()? needHome,
+    TResult Function()? geminiError,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -164,6 +173,7 @@ class _$InitImpl implements Init {
     required TResult Function(Loading value) loading,
     required TResult Function(NeedOnBoarding value) needOnboarding,
     required TResult Function(NeedHome value) needHome,
+    required TResult Function(GeminiError value) geminiError,
   }) {
     return init(this);
   }
@@ -175,6 +185,7 @@ class _$InitImpl implements Init {
     TResult? Function(Loading value)? loading,
     TResult? Function(NeedOnBoarding value)? needOnboarding,
     TResult? Function(NeedHome value)? needHome,
+    TResult? Function(GeminiError value)? geminiError,
   }) {
     return init?.call(this);
   }
@@ -186,6 +197,7 @@ class _$InitImpl implements Init {
     TResult Function(Loading value)? loading,
     TResult Function(NeedOnBoarding value)? needOnboarding,
     TResult Function(NeedHome value)? needHome,
+    TResult Function(GeminiError value)? geminiError,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -241,6 +253,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function() loading,
     required TResult Function() needOnboarding,
     required TResult Function() needHome,
+    required TResult Function() geminiError,
   }) {
     return loading();
   }
@@ -252,6 +265,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function()? loading,
     TResult? Function()? needOnboarding,
     TResult? Function()? needHome,
+    TResult? Function()? geminiError,
   }) {
     return loading?.call();
   }
@@ -263,6 +277,7 @@ class _$LoadingImpl implements Loading {
     TResult Function()? loading,
     TResult Function()? needOnboarding,
     TResult Function()? needHome,
+    TResult Function()? geminiError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -278,6 +293,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function(Loading value) loading,
     required TResult Function(NeedOnBoarding value) needOnboarding,
     required TResult Function(NeedHome value) needHome,
+    required TResult Function(GeminiError value) geminiError,
   }) {
     return loading(this);
   }
@@ -289,6 +305,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function(Loading value)? loading,
     TResult? Function(NeedOnBoarding value)? needOnboarding,
     TResult? Function(NeedHome value)? needHome,
+    TResult? Function(GeminiError value)? geminiError,
   }) {
     return loading?.call(this);
   }
@@ -300,6 +317,7 @@ class _$LoadingImpl implements Loading {
     TResult Function(Loading value)? loading,
     TResult Function(NeedOnBoarding value)? needOnboarding,
     TResult Function(NeedHome value)? needHome,
+    TResult Function(GeminiError value)? geminiError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -355,6 +373,7 @@ class _$NeedOnBoardingImpl implements NeedOnBoarding {
     required TResult Function() loading,
     required TResult Function() needOnboarding,
     required TResult Function() needHome,
+    required TResult Function() geminiError,
   }) {
     return needOnboarding();
   }
@@ -366,6 +385,7 @@ class _$NeedOnBoardingImpl implements NeedOnBoarding {
     TResult? Function()? loading,
     TResult? Function()? needOnboarding,
     TResult? Function()? needHome,
+    TResult? Function()? geminiError,
   }) {
     return needOnboarding?.call();
   }
@@ -377,6 +397,7 @@ class _$NeedOnBoardingImpl implements NeedOnBoarding {
     TResult Function()? loading,
     TResult Function()? needOnboarding,
     TResult Function()? needHome,
+    TResult Function()? geminiError,
     required TResult orElse(),
   }) {
     if (needOnboarding != null) {
@@ -392,6 +413,7 @@ class _$NeedOnBoardingImpl implements NeedOnBoarding {
     required TResult Function(Loading value) loading,
     required TResult Function(NeedOnBoarding value) needOnboarding,
     required TResult Function(NeedHome value) needHome,
+    required TResult Function(GeminiError value) geminiError,
   }) {
     return needOnboarding(this);
   }
@@ -403,6 +425,7 @@ class _$NeedOnBoardingImpl implements NeedOnBoarding {
     TResult? Function(Loading value)? loading,
     TResult? Function(NeedOnBoarding value)? needOnboarding,
     TResult? Function(NeedHome value)? needHome,
+    TResult? Function(GeminiError value)? geminiError,
   }) {
     return needOnboarding?.call(this);
   }
@@ -414,6 +437,7 @@ class _$NeedOnBoardingImpl implements NeedOnBoarding {
     TResult Function(Loading value)? loading,
     TResult Function(NeedOnBoarding value)? needOnboarding,
     TResult Function(NeedHome value)? needHome,
+    TResult Function(GeminiError value)? geminiError,
     required TResult orElse(),
   }) {
     if (needOnboarding != null) {
@@ -469,6 +493,7 @@ class _$NeedHomeImpl implements NeedHome {
     required TResult Function() loading,
     required TResult Function() needOnboarding,
     required TResult Function() needHome,
+    required TResult Function() geminiError,
   }) {
     return needHome();
   }
@@ -480,6 +505,7 @@ class _$NeedHomeImpl implements NeedHome {
     TResult? Function()? loading,
     TResult? Function()? needOnboarding,
     TResult? Function()? needHome,
+    TResult? Function()? geminiError,
   }) {
     return needHome?.call();
   }
@@ -491,6 +517,7 @@ class _$NeedHomeImpl implements NeedHome {
     TResult Function()? loading,
     TResult Function()? needOnboarding,
     TResult Function()? needHome,
+    TResult Function()? geminiError,
     required TResult orElse(),
   }) {
     if (needHome != null) {
@@ -506,6 +533,7 @@ class _$NeedHomeImpl implements NeedHome {
     required TResult Function(Loading value) loading,
     required TResult Function(NeedOnBoarding value) needOnboarding,
     required TResult Function(NeedHome value) needHome,
+    required TResult Function(GeminiError value) geminiError,
   }) {
     return needHome(this);
   }
@@ -517,6 +545,7 @@ class _$NeedHomeImpl implements NeedHome {
     TResult? Function(Loading value)? loading,
     TResult? Function(NeedOnBoarding value)? needOnboarding,
     TResult? Function(NeedHome value)? needHome,
+    TResult? Function(GeminiError value)? geminiError,
   }) {
     return needHome?.call(this);
   }
@@ -528,6 +557,7 @@ class _$NeedHomeImpl implements NeedHome {
     TResult Function(Loading value)? loading,
     TResult Function(NeedOnBoarding value)? needOnboarding,
     TResult Function(NeedHome value)? needHome,
+    TResult Function(GeminiError value)? geminiError,
     required TResult orElse(),
   }) {
     if (needHome != null) {
@@ -539,4 +569,124 @@ class _$NeedHomeImpl implements NeedHome {
 
 abstract class NeedHome implements LaunchState {
   const factory NeedHome() = _$NeedHomeImpl;
+}
+
+/// @nodoc
+abstract class _$$GeminiErrorImplCopyWith<$Res> {
+  factory _$$GeminiErrorImplCopyWith(
+          _$GeminiErrorImpl value, $Res Function(_$GeminiErrorImpl) then) =
+      __$$GeminiErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GeminiErrorImplCopyWithImpl<$Res>
+    extends _$LaunchStateCopyWithImpl<$Res, _$GeminiErrorImpl>
+    implements _$$GeminiErrorImplCopyWith<$Res> {
+  __$$GeminiErrorImplCopyWithImpl(
+      _$GeminiErrorImpl _value, $Res Function(_$GeminiErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GeminiErrorImpl implements GeminiError {
+  const _$GeminiErrorImpl();
+
+  @override
+  String toString() {
+    return 'LaunchState.geminiError()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GeminiErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() loading,
+    required TResult Function() needOnboarding,
+    required TResult Function() needHome,
+    required TResult Function() geminiError,
+  }) {
+    return geminiError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? loading,
+    TResult? Function()? needOnboarding,
+    TResult? Function()? needHome,
+    TResult? Function()? geminiError,
+  }) {
+    return geminiError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? loading,
+    TResult Function()? needOnboarding,
+    TResult Function()? needHome,
+    TResult Function()? geminiError,
+    required TResult orElse(),
+  }) {
+    if (geminiError != null) {
+      return geminiError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Init value) init,
+    required TResult Function(Loading value) loading,
+    required TResult Function(NeedOnBoarding value) needOnboarding,
+    required TResult Function(NeedHome value) needHome,
+    required TResult Function(GeminiError value) geminiError,
+  }) {
+    return geminiError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Init value)? init,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(NeedOnBoarding value)? needOnboarding,
+    TResult? Function(NeedHome value)? needHome,
+    TResult? Function(GeminiError value)? geminiError,
+  }) {
+    return geminiError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Init value)? init,
+    TResult Function(Loading value)? loading,
+    TResult Function(NeedOnBoarding value)? needOnboarding,
+    TResult Function(NeedHome value)? needHome,
+    TResult Function(GeminiError value)? geminiError,
+    required TResult orElse(),
+  }) {
+    if (geminiError != null) {
+      return geminiError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GeminiError implements LaunchState {
+  const factory GeminiError() = _$GeminiErrorImpl;
 }
