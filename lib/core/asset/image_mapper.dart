@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-enum ImageMapper { geminiLogo, intro1, intro2, intro3, connectError }
+enum ImageMapper {
+  geminiLogo,
+  geminiIcon,
+  intro1,
+  intro2,
+  intro3,
+  connectError
+}
 
 const _mapper = {
   ImageMapper.geminiLogo: "assets/logo/gemini.svg",
+  ImageMapper.geminiIcon: "assets/logo/gemini_icon.svg",
   ImageMapper.intro1: "assets/onboard/intro1.jpeg",
   ImageMapper.intro2: "assets/onboard/intro2.jpeg",
   ImageMapper.intro3: "assets/onboard/intro3.jpeg",

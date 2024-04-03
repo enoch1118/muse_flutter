@@ -3,7 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:muse_flutter/boot.dart';
 import 'package:muse_flutter/core/provider/greeting_provider.dart';
 import 'package:muse_flutter/data/datasource/local/local_datasource.dart';
-import 'package:muse_flutter/data/datasource/remote/gemini_datasource.dart';
 import 'package:muse_flutter/data/repository/gemini_repository.dart';
 import 'package:muse_flutter/data/repository/system_repository.dart';
 import 'package:muse_flutter/domain/repository/gemini_repository_impl.dart';

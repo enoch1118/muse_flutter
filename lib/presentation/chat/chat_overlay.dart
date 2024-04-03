@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:muse_flutter/core/asset/router_mapper.dart';
 import 'package:muse_flutter/core/extensions/extensions.dart';
 import 'package:muse_flutter/core/extensions/router_extension.dart';
+import 'package:muse_flutter/core/logger.dart';
 import 'package:muse_flutter/presentation/chat/bloc/overlay_bloc.dart' as o;
 import 'package:muse_flutter/presentation/common/clip/clips.dart';
 import 'package:muse_flutter/presentation/common/gesture/tap.dart';
@@ -29,15 +31,14 @@ class _ChatOverlayState extends State<ChatOverlay> {
   void initState() {
     super.initState();
     focus.addListener(() {
-      if (focus.hasFocus) {
+      XLog.yellow("focus: ${focus.hasFocus}");
+      if (focus.hasPrimaryFocus) {
         context.read<o.OverlayBloc>().add(o.HasFocus());
         Future.delayed(Durations.long1, () {
           if (mounted) {
             fullfocus.requestFocus();
           }
         });
-      } else {
-        context.read<o.OverlayBloc>().add(o.ToChat());
       }
     });
   }
@@ -96,6 +97,8 @@ class _ChatOverlayState extends State<ChatOverlay> {
             alignment: Alignment.bottomCenter,
             child: Material(
               child: AnimatedContainer(
+                margin: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
                 width: MediaQuery.of(context).size.width,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
@@ -178,14 +181,30 @@ class _ChatOverlayState extends State<ChatOverlay> {
   }
 
   void handleSubmit() async {
-    if (controller.text.isNotEmpty) {
-      final future = context
-          .xpush(RouterMapper.chat, extra: {"initPrompt": controller.text});
-      context.read<o.OverlayBloc>().add(o.ToChat());
-      await future;
-      if (mounted) {
-        context.read<o.OverlayBloc>().add(o.PopToHome());
-      }
+    final bloc = context.read<o.OverlayBloc>();
+    switch (bloc.state) {
+      case o.Init():
+      case o.AtHome():
+        if (controller.text.isNotEmpty) {
+          final future = context
+              .xpush(RouterMapper.chat, extra: {"initPrompt": controller.text});
+          controller.text = "";
+          context.read<o.OverlayBloc>().add(o.ToChat());
+          await future;
+          if (mounted) {
+            context.read<o.OverlayBloc>().add(o.PopToHome());
+          }
+        }
+        break;
+      case o.AtChatWriting():
+        if (controller.text.isNotEmpty) {
+          context
+              .read<o.OverlayBloc>()
+              .add(o.Sending(Content.text(controller.text)));
+          controller.text = "";
+        }
+        break;
+      default:
     }
   }
 }

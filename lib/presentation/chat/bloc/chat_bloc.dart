@@ -25,19 +25,22 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   Future _chat(List<Content> contents, Emitter emit) async {
     final stream = gemini.chat(contents);
-    contents.add(newAssistantContent());
+    List<Content> newContent = [...contents, Content.model([])];
     await for (var event in stream) {
-      final last = contents.last;
-      last.combineParts(event);
-      emit(Loading([...contents]));
+      Content last = newContent.removeLast();
+      last = last.combineParts(event);
+      newContent = [...newContent, last];
+      emit(Loading(newContent));
     }
-    emit(Loaded([...contents]));
+    emit(Loaded(newContent));
   }
 
   Future _onSend(OnSend event, Emitter emit) async {
     switch (state) {
       case Loaded(:final contents):
-        await _chat(contents, emit);
+        final con = [...contents, event.content];
+        emit(Loading(con));
+        await _chat(con, emit);
         break;
       default:
     }

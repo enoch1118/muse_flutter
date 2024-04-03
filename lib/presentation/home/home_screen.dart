@@ -3,10 +3,14 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:muse_flutter/core/asset/color_mapper.dart';
+import 'package:muse_flutter/core/asset/router_mapper.dart';
 import 'package:muse_flutter/core/extensions/context_extension.dart';
+import 'package:muse_flutter/core/extensions/router_extension.dart';
 import 'package:muse_flutter/core/extensions/textstyle_extension.dart';
 import 'package:muse_flutter/core/extensions/widget_extension.dart';
 import 'package:muse_flutter/core/provider/greeting_provider.dart';
+import 'package:muse_flutter/presentation/chat/bloc/overlay_bloc.dart' as o;
+import 'package:muse_flutter/presentation/common/gesture/tap.dart';
 import 'package:muse_flutter/presentation/common/shader/shader_mask.dart';
 import 'package:muse_flutter/presentation/home/bloc/home_bloc.dart';
 import 'package:muse_flutter/presentation/chat/chat_overlay.dart';
@@ -23,9 +27,14 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _HomeScreen extends StatelessWidget {
+class _HomeScreen extends StatefulWidget {
   const _HomeScreen();
 
+  @override
+  State<_HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<_HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final greeting = GetIt.I.get<GreetingProvider>();
@@ -50,7 +59,7 @@ class _HomeScreen extends StatelessWidget {
               style: context.t.titleLarge.s(46).cw,
             ).wp,
             questionsBuilder(context),
-            T("기록", context.t.bodyLarge).wp
+            // T("기록", context.t.bodyLarge).wp
           ],
         ),
       ),
@@ -83,10 +92,13 @@ class _HomeScreen extends StatelessWidget {
   Widget questions(List<String> questions) {
     return PageView.builder(
       padEnds: false,
-      controller: PageController(viewportFraction: 0.4),
+      controller: PageController(viewportFraction: 0.36),
       itemBuilder: (context, index) => LayoutBuilder(builder: (context, cons) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
+        return Tap(
+          ignoreMinsize: true,
+          onPressed: () {
+            handleToChat(questions[index], context);
+          },
           child: Container(
               width: cons.maxHeight,
               height: cons.maxHeight,
@@ -107,5 +119,16 @@ class _HomeScreen extends StatelessWidget {
       }),
       itemCount: questions.length,
     );
+  }
+
+  Future handleToChat(String text, BuildContext context) async {
+    final future =
+        context.xpush(RouterMapper.chat, extra: {"initPrompt": text});
+    context.read<o.OverlayBloc>().add(o.ToChat());
+    await future;
+    if (mounted) {
+      // ignore: use_build_context_synchronously
+      context.read<o.OverlayBloc>().add(o.PopToHome());
+    }
   }
 }

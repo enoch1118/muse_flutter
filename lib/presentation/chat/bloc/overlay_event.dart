@@ -9,6 +9,15 @@ class OverlayEvent extends Equatable {
 
 class ToChat extends OverlayEvent {}
 
+class Sending extends OverlayEvent {
+  final Content content;
+  const Sending(this.content);
+}
+
 class HasFocus extends OverlayEvent {}
 
+class NoFocus extends OverlayEvent {}
+
 class PopToHome extends OverlayEvent {}
+
+class OnLoaded extends OverlayEvent {}

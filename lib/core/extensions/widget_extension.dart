@@ -113,6 +113,10 @@ extension WidgetExtension on Widget {
     }
     return this;
   }
+
+  Widget get sliver => SliverToBoxAdapter(
+        child: this,
+      );
 }
 
 class T extends StatelessWidget {

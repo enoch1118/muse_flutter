@@ -15,13 +15,30 @@ class MuseApp extends StatelessWidget {
         builder: (context, child) {
           return Overlay(
             initialEntries: [
-              OverlayEntry(builder: (context) => child ?? Container())
+              OverlayEntry(
+                  builder: (context) => _Unfocus(child: child ?? Container()))
             ],
           );
         },
         scrollBehavior: DisallowOverscrollBehavior(),
         routerConfig: XRouter.router,
       ),
+    );
+  }
+}
+
+class _Unfocus extends StatelessWidget {
+  const _Unfocus({required this.child});
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: child,
     );
   }
 }

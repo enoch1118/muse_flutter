@@ -12,15 +12,28 @@ class OverlayBloc extends Bloc<OverlayEvent, OverlayState> {
     on<ToChat>(_toChat);
     on<PopToHome>(_popToHome);
     on<HasFocus>(_hasFocus);
+    on<OnLoaded>(_onLoaded);
+    on<Sending>(_sending);
+    on<NoFocus>(_noFocus);
   }
+  Future _noFocus(NoFocus event, Emitter emit) async {
+    emit(AtChat(Content.text("")));
+  }
+
+  Future _sending(Sending event, Emitter emit) async {
+    emit(Loading(event.content));
+  }
+
+  Future _onLoaded(OnLoaded event, Emitter emit) async {
+    emit(AtChat(Content.text("")));
+  }
+
   Future _hasFocus(HasFocus event, Emitter emit) async {
     emit(AtChatWriting(Content.text("")));
   }
 
   Future _toChat(ToChat event, Emitter emit) async {
     emit(Loading(Content.text("")));
-    await Future.delayed(Duration(seconds: 2));
-    emit(AtChat(Content.text("")));
   }
 
   Future _popToHome(PopToHome event, Emitter emit) async {
